@@ -24,13 +24,16 @@ class User:
     # Maybe I should look at having the categories checked inside the types of transactions?
     def get_transactions(self,filter_type = None, filter_category = None):
         for transaction in self.transactions:
-            # Che
+            # Checks if filter_type is income or expense
             if filter_type == 'income' and transaction.type == 'income':
                 print(transaction)
             elif filter_type == 'expense' and transaction.type == 'expense':
                 print(transaction)
+            if filter_category == transaction.category:
+                print(transaction)
+            if filter_type == None and filter_category == None:
+                print(transaction)
 
-        
     
     def set_budget(self,category,limit):
         # Sets a budget for a specific category
@@ -43,7 +46,8 @@ class User:
 
     # Generates a report of all transactions, including the category, date, description, and amount
     def generate_report(self):
-        pass
+        for transaction in self.transactions:
+            print(f"Category: {transaction.category}, Date: {transaction.date}, Description: {transaction.description}")
 
     # think about it
     def save_data():
