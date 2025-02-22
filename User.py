@@ -15,11 +15,11 @@ class User:
     
     def calculate_balance(self):
         for transaction in self.transactions:
-            if transaction == 'income':
-                self.balance += transaction['amount']
-            elif transaction == 'expense':
-                self.balance -= transaction['amount']
-        return f"Your balance is: {self.balance}.2f"
+            if transaction.type == 'income':
+                self.balance += transaction.amount
+            elif transaction.type == 'expense':
+                self.balance += transaction.amount
+        return f"Your balance is: {self.balance}"
     
     # Maybe I should look at having the categories checked inside the types of transactions?
     def get_transactions(self,filter_type = None, filter_category = None):
@@ -27,7 +27,7 @@ class User:
         if filter_type.lower() == 'income':
             return [t for t in self.transactions if t.type == filter_type]
         elif filter_type.lower() == 'expense':
-            return [t for t in self.transactions if t.type == filter_type]
+            return f"hi{[t for t in self.transactions if t.type == filter_type]}"
         else:
             return "This type of transaction does not exist, you can only search for income or expense"
 
