@@ -15,7 +15,6 @@ class main():
     print(transaction2)
     print(transaction3)
 
-
     # Test Budget for budget class
     # Create a Budget instance for "Groceries" with a limit of 500 and current spent of 0
     grocery_budget = Budget("Groceries", 500, 0)
@@ -35,6 +34,33 @@ class main():
     # Check the budget status again
     print(grocery_budget.check_budget())
 
+    print("----" * 20)
+    # Tests User class
+    # Create a User instance
+    user = User("John Doe", [], {}, 0)
+
+    # Add transactions
+    user.add_transaction(1000, "Salary", "2024-02-20", "Monthly salary", "income")
+    user.add_transaction(-200, "Groceries", "2024-02-21", "Weekly groceries", "expense")
+    user.add_transaction(-50, "Transport", "2024-02-22", "Bus fare", "expense")
+
+    # Print balance
+    print(user.calculate_balance())
+
+    # Get transactions filtered by type
+    print("\nIncome Transactions:")
+    print(user.get_transactions(filter_type="income"))
+
+    print("\nExpense Transactions:")
+    print(user.get_transactions(filter_type="expense"))
+
+    # Set budgets
+    print(user.set_budget("Groceries", 300))
+    print(user.set_budget("Transport", 100))
+
+    # Check budgets
+    print("\nBudget Status:")
+    print(user.check_all_budgets())
 
 if __name__ == '__main__':
     main()

@@ -14,8 +14,11 @@ class User:
         self.transactions.append(Transaction(amount,category,date,description,type))
     
     def calculate_balance(self):
-        for amount in self.transactions:
-            self.balance += amount
+        for transaction in self.transactions:
+            if transaction == 'income':
+                self.balance += transaction['amount']
+            elif transaction == 'expense':
+                self.balance -= transaction['amount']
         return f"Your balance is: {self.balance}.2f"
     
     # Maybe I should look at having the categories checked inside the types of transactions?
@@ -36,11 +39,11 @@ class User:
     def set_budget(self,category,limit):
         # Sets a budget for a specific category
         self.budget[category] = limit # Sets the limit you have entered into the category you have chosen
-        return f"You have set the budget limit of: {limit} for the category: {self.budget[category]}"
+        return f"You have set the budget limit of: {limit} for the category: {category}"
     
     # Checks if any category is over budget. and returns the categories that are
     def check_all_budgets(self):
-        return [bc for bc in self.budget.values()] # BC is budget categories and BL is budget limits
+        return [(b,c) for b,c in self.budget.items()] # BC is budget categories and BL is budget limits
 
     # Generates a report of all transactions, including the category, date, description, and amount
     def generate_report(self):
