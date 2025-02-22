@@ -31,7 +31,7 @@ class User:
         else:
             return "This type of transaction does not exist, you can only search for income or expense"
 
-        if filter_category in self.transactions.category:
+        if filter_category in self.transactions:
             return [t for t in self.transactions if t.category == filter_category]
         else: 
             return "This category does not exist within your transactions."
