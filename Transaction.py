@@ -12,4 +12,3 @@ class Transaction:
         return f"Transaction: {self.description}, Amount: {self.amount}, Category: {self.category}, Date: {self.date}, Type of Transaction: {self.type}"
 
     
-
