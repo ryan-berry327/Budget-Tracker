@@ -8,6 +8,11 @@ class Budget:
         self.limit = limit
         self.current_spent = current_spent
 
+    # String of details from this class
+    def __str__(self):
+        return f"Budget Status \n Category: {self.category}, Limit: {self.limit}, Current Spend: {self.current_spent}" 
+    
+
     # Updates the current amount spent by adding the amount you just spent to the current spent
     def update_spent(self,amount):
         self.current_spent += amount
@@ -22,6 +27,3 @@ class Budget:
         else:
             return f"Budget is still valid for {self.category}, Limit: {self.limit}, Current Spent {self.current_spent}"
 
-    # String of details from this class
-    def __str__(self):
-        return f"Budget Status \n Category: {self.category}, Limit: {self.limit}, Current Spend: {self.current_spent}" 

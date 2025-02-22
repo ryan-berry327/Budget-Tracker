@@ -46,7 +46,6 @@ class User:
     def generate_report(self):
         pass
 
-
     # think about it
     def save_data():
         pass
