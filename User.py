@@ -23,18 +23,14 @@ class User:
     
     # Maybe I should look at having the categories checked inside the types of transactions?
     def get_transactions(self,filter_type = None, filter_category = None):
-        # Returns a list of transactions that match the filter criteria
-        if filter_type.lower() == 'income':
-            return [t for t in self.transactions if t.type == filter_type]
-        elif filter_type.lower() == 'expense':
-            return f"hi{[t for t in self.transactions if t.type == filter_type]}"
-        else:
-            return "This type of transaction does not exist, you can only search for income or expense"
+        for transaction in self.transactions:
+            # Che
+            if filter_type == 'income' and transaction.type == 'income':
+                print(transaction)
+            elif filter_type == 'expense' and transaction.type == 'expense':
+                print(transaction)
 
-        if filter_category in self.transactions:
-            return [t for t in self.transactions if t.category == filter_category]
-        else: 
-            return "This category does not exist within your transactions."
+        
     
     def set_budget(self,category,limit):
         # Sets a budget for a specific category
