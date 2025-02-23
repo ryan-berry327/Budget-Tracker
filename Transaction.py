@@ -8,7 +8,7 @@ class Transaction:
         self.description = description
         self.type = type
 
-    def __str__(self):
+    def __repr__(self):
         return f"Transaction: {self.description}, Amount: {self.amount}, Category: {self.category}, Date: {self.date}, Type of Transaction: {self.type}"
 
-    
+  

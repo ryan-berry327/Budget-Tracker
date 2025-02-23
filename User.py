@@ -21,7 +21,7 @@ class User:
                 self.balance += transaction.amount
         return f"Your balance is: {self.balance}"
     
-    # Maybe I should look at having the categories checked inside the types of transactions?
+
     def get_transactions(self, filter_type=None, filter_category=None):
         filter_results = []
 
