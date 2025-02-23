@@ -1,5 +1,8 @@
 from Transaction import Transaction
 from Budget import Budget
+import json
+import os
+
 
 class User:
 
@@ -56,9 +59,11 @@ class User:
 
     # think about it
     def save_data():
-        pass
+        with open("budget_data.json","w") as file:
+            json.dump(self.__dict__,file,indent=4)
 
     def load_data():
-        pass
+        if os.path.exists("budget_data.json","r") as file:
+            self.transactions = json.load(file)
 
 
