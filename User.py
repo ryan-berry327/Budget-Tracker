@@ -22,17 +22,22 @@ class User:
         return f"Your balance is: {self.balance}"
     
     # Maybe I should look at having the categories checked inside the types of transactions?
-    def get_transactions(self,filter_type = None, filter_category = None):
+    def get_transactions(self, filter_type=None, filter_category=None):
+        filter_results = []
+
         for transaction in self.transactions:
-            # Checks if filter_type is income or expense
-            if filter_type == 'income' and transaction.type == 'income':
-                print(transaction)
-            elif filter_type == 'expense' and transaction.type == 'expense':
-                print(transaction)
-            if filter_category == transaction.category:
-                print(transaction)
-            if filter_type == None and filter_category == None:
-                print(transaction)
+            # If filter type is provided, ensure it matches
+            if filter_type and transaction.type != filter_type:
+                continue  # Skip this transaction if type doesn't match
+
+            # If filter category is provided, ensure it matches
+            if filter_category and transaction.category != filter_category:
+                continue  # Skip this transaction if category doesn't match
+
+            # If the transaction meets the conditions, add it to results
+            filter_results.append(transaction)
+
+        return filter_results  # Return all filtered transactions
 
     
     def set_budget(self,category,limit):
