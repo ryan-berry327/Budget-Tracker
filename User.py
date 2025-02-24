@@ -60,7 +60,7 @@ class User:
     # think about it
     def save_data():
         with open("budget_data.json","w") as file:
-            json.dump(self.__dict__,file,indent=4)
+            json.dump(self.transactions,file,indent=4)
 
     def load_data():
         if os.path.exists("budget_data.json","r") as file:
