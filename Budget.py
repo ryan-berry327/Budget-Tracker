@@ -6,23 +6,18 @@ class Budget:
     def __init__(self, category, limit, current_spent):
         self.category = category
         self.limit = limit
-        self.current_spent = current_spent
+        self.current_spent = 0
 
     # String of details from this class
     def __str__(self):
         return f"Budget Status\nCategory: {self.category}, Limit: {self.limit}, Current Spend: {self.current_spent}. Amount left of the budget: {self.limit - self.current_spent}"
 
-    # Updates the current amount spent by adding the amount you just spent to the current spent
-    def update_spent(self,amount):
-        self.current_spent += amount
-        return f"Current spent is now {self.current_spent}"
-    
-    # Checks if you are over the budget for the category returns warning 
-    # If the limit hasnt been exceeded return budget still valid and shows the 
-    # limit and how much you have spent.
-    def check_budget(self):
-        if self.current_spent > self.limit:
-            return f"Budget exceeded for {self.category}, stop spending!. Exceeded by {abs(self.limit - self.current_spent)}"
-        else:
-            return f"Budget is still valid for {self.category}, Limit: {self.limit}, Current Spent {self.current_spent}. Amount left to spend {self.limit - self.current_spent}"
+    def is_exceeded(self):
+            """Returns True if spending exceeds the limit, False otherwise."""
+            return self.current_spent > self.limit
 
+    def check_budget(self):
+        if self.is_exceeded():
+            return f"Budget exceeded for {self.category}, stop spending! Exceeded by {abs(self.limit - self.current_spent)}"
+        else:
+            return f"Budget is still valid for {self.category}, Limit: {self.limit}, Current Spent: {self.current_spent}. Amount left: {self.limit - self.current_spent}"
